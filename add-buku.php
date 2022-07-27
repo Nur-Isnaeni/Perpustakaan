@@ -260,7 +260,7 @@
                             <h6 class="m-0 font-weight-bold text-primary">Tambah Buku</h6>
                         </div>
                         <div class="card-body">
-                            <form action="" method="post">
+                            <form action="add-buku-insert.php" method="post">
                                 <div class="form-group">
                                     <label>Nama Buku</label>
                                     <input type="text" name="nama_buku" placeholder="Nama Buku" class="form-control">
