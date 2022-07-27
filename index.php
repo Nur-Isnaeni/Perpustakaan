@@ -282,8 +282,8 @@
                                                 <td><?= $nomor++ ?></td>
                                                 <td><?= $data['nama_buku'] ?></td>
                                 <td>
-                                    <a href="buku/edit-buku.php?id=<?php echo $data['id']?>" class="btn btn-primary ">edit</a> 
-                                    <a href="buku/delete-buku.php?id=<?php echo $data['id']?>" class="btn btn-danger ">delete</a>
+                                    <a href="edit-buku.php?id=<?php echo $data['id']?>" class="btn btn-primary ">edit</a> 
+                                    <a href="delete-buku.php?id=<?php echo $data['id']?>" class="btn btn-danger ">delete</a>
                                 </td>
                             </tr>
                     <?php } ?>
