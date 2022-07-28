@@ -257,25 +257,16 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Edit Buku</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Tambah Jenis Buku</h6>
                         </div>
                         <div class="card-body">
-                        <?php include('connection.php'); ?>
-
-                        <?php
-                            $id_buku = $_GET['id'];
-                            $query = mysqli_query($connect, "SELECT * from buku where id='$id_buku'");
-                            $result = mysqli_fetch_array($query);
-                        ?>
-                            <form action="edit-buku-update.php" method="post" class="mt-3">
-                                <input type="hidden" name="id" value="<?php echo $result['id'] ?>">
-                                <div class="mb-3">
-                                    <label for="title" class="form-label">Nama Buku</label>
-                                    <input class="form-control" name="nama_buku" type="text" id="nama_buku" aria-label="default input example" 
-                                    value="<?= $result['nama_buku']?>"placeholder="nama_buku">
+                            <form action="insert-jenis-buku.php" method="post">
+                                <div class="form-group">
+                                    <label>Label</label>
+                                    <input type="text" name="label" placeholder="label" class="form-control">
                                 </div>
                                 <button type="submit" class="btn btn-primary">Save</button>
-                                <a href="index.php" class="btn btn-danger">Back</a>
+                                <a href="jenis-buku.php" class="btn btn-danger">Back</a>
                             </form>
                         </div>
                     </div>

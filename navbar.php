@@ -79,12 +79,12 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item ">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="index.php">
                     <i class="fas fa-fw fa-book"></i>
                     <span>Buku</span></a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="jenis-buku.php">
                     <i class="fas fa-fw fa-book"></i>
                     <span>Jenis Buku</span></a>
             </li>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -257,28 +256,47 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Edit Buku</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Table Jenis Buku</h6>
                         </div>
                         <div class="card-body">
-                        <?php include('connection.php'); ?>
+                            <a href="add-jenis-buku.php" class="my-3 btn btn-primary">Add jenis</a>
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <th>
+                                        ID
+                                    </th>
+                                    <th>
+                                        LABEL
+                                    </th>
+                                    <th>
+                                        ACTION 
+                                    </th>
+                                </thead>
+                                    <tbody>
+                                        <?php
+                                        include "connection.php";
+                                        $query = mysqli_query($connect, 'SELECT * from jenis_buku');
+                                        $results = mysqli_fetch_all($query, MYSQLI_ASSOC);
+                                        $nomor = 1;
+                                        foreach ($results as $data) {
+                                        ?>
+                                            <tr>
+                                                <td><?= $nomor++ ?></td>
+                                                <td><?= $data['label'] ?></td>
+                                <td>
+                                    <a href="edit-jenis-buku.php?id=<?php echo $data['id']?>" class="btn btn-primary ">edit</a> 
+                                    <a href="delete-jenis-buku.php?id=<?php echo $data['id']?>" class="btn btn-danger ">delete</a>
+                                </td>
+                            </tr>
+                    <?php } ?>
 
-                        <?php
-                            $id_buku = $_GET['id'];
-                            $query = mysqli_query($connect, "SELECT * from buku where id='$id_buku'");
-                            $result = mysqli_fetch_array($query);
-                        ?>
-                            <form action="edit-buku-update.php" method="post" class="mt-3">
-                                <input type="hidden" name="id" value="<?php echo $result['id'] ?>">
-                                <div class="mb-3">
-                                    <label for="title" class="form-label">Nama Buku</label>
-                                    <input class="form-control" name="nama_buku" type="text" id="nama_buku" aria-label="default input example" 
-                                    value="<?= $result['nama_buku']?>"placeholder="nama_buku">
-                                </div>
-                                <button type="submit" class="btn btn-primary">Save</button>
-                                <a href="index.php" class="btn btn-danger">Back</a>
-                            </form>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
+
                 </div>
                 <!-- /.container-fluid -->
 
@@ -289,7 +307,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; Nur Isnaeni 2022</span>
                     </div>
                 </div>
             </footer>
