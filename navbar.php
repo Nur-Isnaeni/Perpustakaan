@@ -89,7 +89,7 @@
                     <span>Jenis Buku</span></a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="kelas.php">
                 <i class="fab fa-angellist"></i>
                     <span>Kelas</span></a>
             </li>
