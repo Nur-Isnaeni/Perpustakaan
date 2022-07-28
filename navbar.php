@@ -94,7 +94,7 @@
                     <span>Kelas</span></a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="peminjaman.php">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Peminjaman</span></a>
             </li>
