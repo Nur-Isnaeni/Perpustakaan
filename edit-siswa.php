@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -256,44 +257,28 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Table Buku</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Edit Siswa</h6>
                         </div>
                         <div class="card-body">
-                            <a href="add-buku.php" class="my-3 btn btn-primary">Add Book</a>
-                            <a href="add-buku.php" class="my-3 btn btn-danger">DELETE</a>
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                    <tr>
-                                            <th>ID</th>
-                                            <th>NAMA BUKU</th>
-                                            <th>ACTION</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        include "connection.php";
-                                        $query = mysqli_query($connect, 'SELECT * from buku');
-                                        $results = mysqli_fetch_all($query, MYSQLI_ASSOC);
-                                        $nomor = 1;
-                                        foreach ($results as $data) {
-                                        ?>
-                                            <tr>
-                                                <td><?= $nomor++ ?></td>
-                                                <td><?= $data['nama_buku'] ?></td>
-                                <td>
-                                    <a href="edit-buku.php?id=<?php echo $data['id']?>" class="btn btn-primary ">edit</a> 
-                                    <a href="delete-buku.php?id=<?php echo $data['id']?>" class="btn btn-danger ">delete</a>
-                                </td>
-                            </tr>
-                    <?php } ?>
+                        <?php include('connection.php'); ?>
 
-                                    </tbody>
-                                </table>
+                        <?php
+                            $id_siswa = $_GET['id'];
+                            $query = mysqli_query($connect, "SELECT * from siswa where id='$id_siswa'");
+                            $result = mysqli_fetch_array($query);
+                        ?>
+                            <form action="edit-siswa-update.php" method="post" class="mt-3">
+                            <input type="hidden" name="id" value="<?php echo $result['id'] ?>">
+                            <div class="mb-3">
+                                <label for="" class="form-label">Nama Siswa</label>
+                                <input class="form-control" name="nama_siswa" type="text" id="nama_siswa" aria-label="default input example" 
+                                value="<?= $result['nama_siswa']?>"placeholder="nama_siswa">
                             </div>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                                <a href="index.php" class="btn btn-danger">Back</a>
+                            </form>
                         </div>
                     </div>
-
                 </div>
                 <!-- /.container-fluid -->
 
@@ -304,7 +289,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Nur Isnaeni 2022</span>
+                        <span>Copyright &copy; Your Website 2020</span>
                     </div>
                 </div>
             </footer>

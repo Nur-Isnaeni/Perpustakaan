@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -256,44 +257,32 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Table Buku</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Tambah Siswa</h6>
                         </div>
                         <div class="card-body">
-                            <a href="add-buku.php" class="my-3 btn btn-primary">Add Book</a>
-                            <a href="add-buku.php" class="my-3 btn btn-danger">DELETE</a>
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                    <tr>
-                                            <th>ID</th>
-                                            <th>NAMA BUKU</th>
-                                            <th>ACTION</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
+                            <form action="insert-siswa.php" method="post">
+                                <div class="form-group">
+                                    <label for="nama_siswa">Nama Siswa</label>
+                                   <input type="text" name="nama_siswa" id="nama_siswa" class="form-control" placeholder="Nama Siswa">
+                                </div>
+                                <div class="form-group">
+                                    <label for="kelas_id">Nama Kelas</label>
+                                    <select name="kelas_id" id="kelas_id" class="form-control">
+                                        <option value="">-- Pilih Satu --</option>
                                         <?php
-                                        include "connection.php";
-                                        $query = mysqli_query($connect, 'SELECT * from buku');
-                                        $results = mysqli_fetch_all($query, MYSQLI_ASSOC);
-                                        $nomor = 1;
-                                        foreach ($results as $data) {
+                                        include 'connection.php';
+                                        $query = mysqli_query($connect, 'SELECT * FROM kelas');
+                                        $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+                                        foreach ($result as $data) {
                                         ?>
-                                            <tr>
-                                                <td><?= $nomor++ ?></td>
-                                                <td><?= $data['nama_buku'] ?></td>
-                                <td>
-                                    <a href="edit-buku.php?id=<?php echo $data['id']?>" class="btn btn-primary ">edit</a> 
-                                    <a href="delete-buku.php?id=<?php echo $data['id']?>" class="btn btn-danger ">delete</a>
-                                </td>
-                            </tr>
-                    <?php } ?>
-
-                                    </tbody>
-                                </table>
-                            </div>
+                                            <option value="<?= $data['id'] ?>"><?= $data['nama_kelas']?></option>
+                                            <?php } ?>
+                                        </select>                                        
+                                <button type="submit" class="btn btn-primary">Save</button>
+                                <a href="index.php" class="btn btn-danger">Back</a>
+                            </form>
                         </div>
                     </div>
-
                 </div>
                 <!-- /.container-fluid -->
 
@@ -304,7 +293,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Nur Isnaeni 2022</span>
+                        <span>Copyright &copy; Your Website 2020</span>
                     </div>
                 </div>
             </footer>

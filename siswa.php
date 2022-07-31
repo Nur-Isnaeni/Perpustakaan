@@ -256,34 +256,40 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Table Buku</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Table Siswa</h6>
                         </div>
                         <div class="card-body">
-                            <a href="add-buku.php" class="my-3 btn btn-primary">Add Book</a>
-                            <a href="add-buku.php" class="my-3 btn btn-danger">DELETE</a>
+                            <a href="add-siswa.php" class="my-3 btn btn-primary">Add Siswa</a>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
                                             <th>ID</th>
-                                            <th>NAMA BUKU</th>
+                                            <th>KELAS ID</th>
+                                            <th>NAMA SISWA</th>
                                             <th>ACTION</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         include "connection.php";
-                                        $query = mysqli_query($connect, 'SELECT * from buku');
+                                        $sql = 'SELECT siswa.id,siswa.kelas_id,siswa.nama_siswa, kelas.nama_kelas
+                                                FROM siswa
+                                                JOIN kelas
+                                                ON siswa.kelas_id = kelas.id';
+                                        $query = mysqli_query($connect, $sql);
                                         $results = mysqli_fetch_all($query, MYSQLI_ASSOC);
                                         $nomor = 1;
                                         foreach ($results as $data) {
                                         ?>
                                             <tr>
                                                 <td><?= $nomor++ ?></td>
-                                                <td><?= $data['nama_buku'] ?></td>
+                                                <td><?= $data['nama_kelas'] ?></td>
+                                                <td><?= $data['nama_siswa'] ?></td>
+                                                
                                 <td>
-                                    <a href="edit-buku.php?id=<?php echo $data['id']?>" class="btn btn-primary ">edit</a> 
-                                    <a href="delete-buku.php?id=<?php echo $data['id']?>" class="btn btn-danger ">delete</a>
+                                    <a href="edit-siswa.php?id=<?php echo $data['id']?>" class="btn btn-primary ">edit</a> 
+                                    <a href="delete-siswa.php?id=<?php echo $data['id']?>" class="btn btn-danger ">delete</a>
                                 </td>
                             </tr>
                     <?php } ?>
